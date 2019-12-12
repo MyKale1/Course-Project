@@ -47,10 +47,10 @@ class UI {
     }
 
     static deleteContact(el) {
-        if(el.contactList.contains('delete')) {
-            el.parentElement.parentElement.remove();
+        if(el.classList.contains('delete')) {
+          el.parentElement.parentElement.remove();
         }
-    }
+      }
 
 
     static clearFields(){
@@ -104,9 +104,7 @@ document.querySelector('#form').addEventListener('submit', (e)=> {
 
 });
 
-document.querySelector('#contact-list').addEventListener('click', (e)=> {
+document.querySelector('#contact-list').addEventListener('click', (e) => {
     UI.deleteContact(e.target);
     Store.removeContact(e.target.parentElement.previousElementSibling.textContent);
-});
-
-
+})
