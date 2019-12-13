@@ -30,6 +30,8 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead> 
                     <tbody id="contact-list"></tbody>
@@ -38,15 +40,15 @@
         
             <div id="new" class="tabcontent">
                 <h2>New Contact</h2>
-                <form id="form">
+                <form class="form" id="form">
                     <label for="name">Name:</label><br>
-                    <input class="form-control" type="text" name="name" id="name"><br>
+                    <input class="form-control" type="text" name="name" id="name" oninput="checkInput()"><br>
                     <label for="email">Email:</label><br>
-                    <input class="form-control" type="text" name="email" id="email"><br>
+                    <input class="form-control" type="text" name="email" id="email" oninput="checkInput()"><br>
                     <label for="phone">Phone:</label><br>
-                    <input class="form-control" type="text" name="phone" id="phone"><br>
+                    <input class="form-control" type="text" name="phone" id="phone" oninput="checkInput()"><br>
                     
-                    <input type="submit" value="submit" class="btn btn-primary btn-block">
+                    <button type="submit" class="submit" disabled>Submit</button>
                 </form>       
             </div>
         </div>    

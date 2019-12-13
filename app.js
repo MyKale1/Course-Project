@@ -19,6 +19,30 @@ function openTab(evt, tab) {
     evt.currentTarget.className += " active";
 }
 
+var inputName = document.getElementById('name');
+var inputEmail = document.getElementById('email');
+var inputPhone = document.getElementById('phone');
+var button = document.querySelector('.submit');
+var regEx = /\S+@\S+\.\S+/;
+var form = document.querySelector('.form');
+
+function checkInput() {
+    if (inputName.value.trim() !== "" && regEx.test(inputEmail.value) && inputPhone.value.trim() !== "") {
+        button.style.borderColor = 'black';
+        button.style = 'color: white;';
+        button.style = "background-color: rgb(110, 173, 175);";
+        button.disabled = false;
+    } else {
+        button.disabled = true;
+    }
+}
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert("Contact Added")
+    console.log('Submitted');
+})
+
 class Contact {
     constructor(name, email, phone) {
         this.name = name;
@@ -41,14 +65,17 @@ class UI {
             <td>${contact.name}</td>
             <td>${contact.email}</td>
             <td>${contact.phone}</td>
-            <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+
+            <td><button type="button" class="btn btn-danger btn-sm delete">Delete</button></td>
         `;
         list.appendChild(row)
     }
+//           <td><button type="button" class="btn btn-info">Details</button></td>
+//           <td><button type="button" class="btn btn-warning">Edit</button></td>
 
-    static deleteContact(el) {
-        if(el.classList.contains('delete')) {
-          el.parentElement.parentElement.remove();
+    static deleteContact(e) {
+        if(e.classList.contains('delete')) {
+          e.parentElement.parentElement.remove();
         }
       }
 
@@ -57,6 +84,8 @@ class UI {
         document.querySelector('#name').value = '';
         document.querySelector('#email').value = '';
         document.querySelector('#phone').value = '';
+        document.querySelector('.submit').disabled = true;
+        document.querySelector('.submit').style = "border-color: null; background-color: #c9c9c9; color: black;"
     }
 }
 
